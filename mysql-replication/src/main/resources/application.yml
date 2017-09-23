@@ -1,0 +1,36 @@
+server:
+  port: 9090
+spring:
+  profiles:
+    active: dev
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+
+---
+
+spring:
+  profiles: dev
+  datasource:
+    username: sadev
+    password: 111111
+    url: jdbc:mysql:replication://10.1.6.37:3306,10.1.6.134:3306,10.1.6.252:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=false&loadBalanceStrategy=random&defaultAutoCommit=true
+    driver-class-name: com.mysql.jdbc.ReplicationDriver
+
+
+management:
+  security:
+    enabled: false
+
+logging:
+  level:
+    com.jack: DEBUG
+
+---
+
+spring:
+  profiles: online
+  datasource:
+    username: sadev
+    password: 111111
+    url: jdbc:mysql:replication://10.1.6.37:3306,10.1.6.134:3306,10.1.6.252:3306/test?useUnicode=true&characterEncoding=UTF-8&autoReconnect=false&loadBalanceStrategy=random&defaultAutoCommit=true
+    driver-class-name: com.mysql.jdbc.ReplicationDriver
