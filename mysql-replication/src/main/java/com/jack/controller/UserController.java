@@ -27,7 +27,7 @@ public class UserController {
         return new ResponseEntity<>(userService.getUser(id), HttpStatus.OK);
     }
 
-    @PostMapping("/")
+    @PostMapping(value = "/", consumes = "application/json")
     public ResponseEntity<Integer> addUser(@RequestBody User user) {
         return new ResponseEntity<>(userService.insertUser(user), HttpStatus.OK);
     }
