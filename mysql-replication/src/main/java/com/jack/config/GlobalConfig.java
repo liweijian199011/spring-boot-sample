@@ -25,16 +25,21 @@ public class GlobalConfig {
     private static final String ONLINE = "online";
 
     static {
-        PROFILE = lookupKey("spring.profiles.active");
+        PROFILE = profile();
     }
 
-    public static String lookupKey(String key) {
+    private static String profile() {
+        return lookupKey("spring.profiles.active");
+    }
+    private static String lookupKey(String key) {
         String profile = System.getProperty(key);
         if (StringUtils.isEmpty(profile)) {
             profile = System.getenv(key);
         }
-        Environment environment = SpringContextUtils.getBeanByType(Environment.class);
-        profile = environment.getActiveProfiles()[0];
+        if (StringUtils.isEmpty(profile)) {
+            Environment environment = SpringContextUtils.getBeanByType(Environment.class);
+            profile = environment.getActiveProfiles()[0];
+        }
         logger.info("-------------current profile---------------: {}", profile);
         return profile;
     }

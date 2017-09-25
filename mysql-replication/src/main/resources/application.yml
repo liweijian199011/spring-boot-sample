@@ -5,6 +5,13 @@ spring:
     active: dev
 mybatis:
   mapper-locations: classpath:mapper/*.xml
+endpoints:
+  jmx:
+    enabled: true
+    domain: replication
+jolokia:
+  config:
+    debug: true
 
 ---
 
