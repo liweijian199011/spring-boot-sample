@@ -13,6 +13,6 @@ import com.jack.mapper.GlobalMapper;
 public class HostnameUtils {
 
     public static String getHostname() {
-        return SpringContextUtils.getBeanByType(GlobalMapper.class).selectHostname();
+        return SpringUtils.getBean(GlobalMapper.class).selectHostname();
     }
 }

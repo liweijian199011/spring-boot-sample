@@ -1,6 +1,6 @@
 package com.jack.config;
 
-import com.jack.util.SpringContextUtils;
+import com.jack.util.SpringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.core.env.Environment;
@@ -37,7 +37,7 @@ public class GlobalConfig {
             profile = System.getenv(key);
         }
         if (StringUtils.isEmpty(profile)) {
-            Environment environment = SpringContextUtils.getBeanByType(Environment.class);
+            Environment environment = SpringUtils.getBean(Environment.class);
             profile = environment.getActiveProfiles()[0];
         }
         logger.info("-------------current profile---------------: {}", profile);
