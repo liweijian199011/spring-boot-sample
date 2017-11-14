@@ -1,0 +1,1 @@
+CREATE TABLE user (id int(11) primary key AUTO_INCREMENT,username varchar(30) NOT NULL,password varchar(30) NOT NULL,gender tinyint(4) NOT NULL,create_time timestamp COMMENT '创建时间',update_time timestamp COMMENT '更新时间')
